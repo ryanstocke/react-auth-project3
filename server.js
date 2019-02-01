@@ -1,12 +1,13 @@
 const express = require('express')
+const app = express();
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const session = require('express-session');
+const dbConnection = require('./config');
+const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const morgan = require('morgan');
-const dbConnection = require('./database') 
-const MongoStore = require('connect-mongo')(session)
-const app = express()
+
 const PORT = process.env.PORT || 3001;
 
 app.use(routes);
@@ -20,8 +21,8 @@ app.use(express.static('public'));
 app.use(
 	session({
 		secret: 'lord of bones', //pick a random string to make the hash that is generated secure
-		store: new MongoStore({ mongooseConnection: dbConnection }),
-		resave: false, //required
+        store: new MongoStore({ mongooseConnection: dbConnection }),
+        resave: false, //required
 		saveUninitialized: false //required
 	})
 )
