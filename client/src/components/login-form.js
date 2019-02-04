@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-
+import '../App.css';
 class LoginForm extends Component {
     constructor() {
         super()
@@ -31,8 +31,7 @@ class LoginForm extends Component {
                 password: this.state.password
             })
             .then(response => {
-                console.log('login response: ')
-                console.log(response)
+                console.log('login response: ', response)
                 if (response.status === 200) {
                     // update App.js state
                     this.props.updateUser({
@@ -45,13 +44,12 @@ class LoginForm extends Component {
                     })
                 }
             }).catch(error => {
-                console.log('login error: ')
-                console.log(error);
-                
+                console.log('login error: ', error);
             })
     }
 
     render() {
+        document.body.style.backgroundColor = "grey";
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {

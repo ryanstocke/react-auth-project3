@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import '../App.css';
 class Home extends Component {
     constructor() {
         super()
@@ -7,10 +7,10 @@ class Home extends Component {
 
 
     render() {
-        
+        document.body.style.backgroundColor = "grey";
         return (
             <div>
-                <p>Welcome home!</p>
+                <h1>Medeival Zombies page place holder could add an image background or other elements</h1>
                 
             </div>
         )

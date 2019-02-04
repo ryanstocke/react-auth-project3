@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Route, Link } from 'react-router-dom'
-import logo from '../logo.svg';
+
 import '../App.css';
 import axios from 'axios'
 
@@ -23,7 +23,7 @@ class Navbar extends Component {
             })
           }
         }).catch(error => {
-            console.log('Logout error')
+            console.log('Logout error', error);
         })
       }
 
@@ -59,8 +59,8 @@ class Navbar extends Component {
                     </div>
                     <div className="col-4 col-mr-auto">
                     <div id="top-filler"></div>
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h1 className="App-title">Medeival Zombies</h1>
+                        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+                        <h1 className="App-title"></h1>
                     </div>
                 </header>
             </div>

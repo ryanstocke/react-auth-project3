@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import '../App.css';
 class Signup extends Component {
 	constructor() {
 		super()
@@ -32,9 +32,7 @@ class Signup extends Component {
 				console.log(response)
 				if (!response.data.errmsg) {
 					console.log('successful signup')
-					this.setState({ //redirect to login page
-						redirectTo: '/login'
-					})
+					window.location.href = '/login'
 				} else {
 					console.log('username already taken')
 				}
@@ -47,6 +45,7 @@ class Signup extends Component {
 
 
 render() {
+	document.body.style.backgroundColor = "grey";
 	return (
 		<div className="SignupForm">
 			<h4>Sign up</h4>

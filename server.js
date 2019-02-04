@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 const routes = require('./routes');
 const session = require('express-session');
 const dbConnection = require('./config');
-const MongoStore = require('connect-mongo')(session);
+// const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const morgan = require('morgan');
 
 const PORT = process.env.PORT || 3001;
 
-app.use(routes);
+
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.use(
 	session({
 		secret: 'lord of bones', //pick a random string to make the hash that is generated secure
-        store: new MongoStore({ mongooseConnection: dbConnection }),
+        // store: new MongoStore({ mongooseConnection: dbConnection }),
         resave: false, //required
 		saveUninitialized: false //required
 	})
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }
 
-
+app.use(routes);
 // Starting Server 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-project3', { useNewUrlParser: true }, function(err) {

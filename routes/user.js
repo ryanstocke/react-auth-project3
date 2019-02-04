@@ -5,7 +5,7 @@ const passport = require('../config/')
 
 router.post('/', (req, res) => {
     console.log('user signup');
-
+    console.log(req.body)
     const { username, password } = req.body
     // ADD VALIDATION
     User.findOne({ username: username }, (err, user) => {
@@ -21,9 +21,12 @@ router.post('/', (req, res) => {
                 username: username,
                 password: password
             })
-            newUser.save((err, savedUser) => {
+            newUser.password = newUser.hashPassword(password);
+            console.log(newUser);
+            newUser.save((err) => {
                 if (err) return res.json(err)
-                res.json(savedUser)
+                console.log(newUser)
+                res.json(newUser)
             })
         }
     })
@@ -63,6 +66,13 @@ router.post('/logout', (req, res) => {
     } else {
         res.send({ msg: 'no user to log out' })
     }
-})
+});
+// router.get("/game",isAuthenticated, function(req, res) {
+//     res.sendFile(path.join(__dirname, "../client/public/game.html"));
+//   });
+// router.post("/testing", (req, res)=> {
+//     console.log(req.body)
+//     res.send(req.body)
+// })
 
 module.exports = router
