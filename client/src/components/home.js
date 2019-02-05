@@ -10,7 +10,7 @@ class Home extends Component {
         document.body.style.backgroundColor = "grey";
         return (
             <div>
-                <h1>Medeival Zombies page place holder could add an image background or other elements</h1>
+                <h1>Medeival Zombies page place holder could add an image background or other components</h1>
                 
             </div>
         )
